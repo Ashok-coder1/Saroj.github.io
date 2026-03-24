@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Sharad Mani Kharal</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #c5a059;
+            --gold-light: #e0c38c;
+            --dark: #0f172a;
+            --glass: rgba(15, 23, 42, 0.85);
+            --border: rgba(197, 160, 89, 0.3);
+        }
+
+        /* --- BASE STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--dark); 
+            color: #f1f5f9; 
+            line-height: 1.7; 
+            overflow-x: hidden; 
+        }
+
+        /* --- BACKGROUND SLIDER --- */
+        .bg-slider { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+        .bg-slider .slide { 
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            background-size: cover; 
+            background-position: center; 
+            opacity: 0; 
+            animation: kenburns 24s infinite; 
+        }
+        .slide:nth-child(1) { background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=2000'); animation-delay: 0s; }
+        .slide:nth-child(2) { background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=2000'); animation-delay: 8s; }
+        .slide:nth-child(3) { background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1453941403708-3c8032cd411f?auto=format&fit=crop&q=80&w=2000'); animation-delay: 16s; }
+
+        @keyframes kenburns { 
+            0% { opacity: 0; transform: scale(1); } 
+            5% { opacity: 1; } 
+            33% { opacity: 1; } 
+            38% { opacity: 0; transform: scale(1.1); } 
+            100% { opacity: 0; } 
+        }
+
+        /* --- NAVIGATION --- */
+        .navbar { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            padding: 20px 0; 
+            z-index: 1000; 
+            transition: 0.4s; 
+            border-bottom: 1px solid var(--border); 
+            backdrop-filter: blur(15px); 
+        }
+        .navbar.scrolled { padding: 10px 0; background: var(--glass); }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; width: 90%; max-width: 1200px; margin: auto; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); text-decoration: none; font-weight: 900; }
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: #fff; 
+            font-size: 0.85rem; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            transition: 0.3s; 
+        }
+        .nav-links a:hover, .nav-links a.active-link { color: var(--gold); }
+        .nav-links a.active-link { 
+            color: #fff !important; 
+            border-bottom: 2px solid var(--gold); 
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+        .burger { display: none; cursor: pointer; color: white; font-size: 1.5rem; }
+
+        /* --- SERVICES SECTION --- */
+        .services-section { padding: 160px 0 80px; width: 90%; max-width: 1200px; margin: auto; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h1 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 3rem; margin-bottom: 10px; }
+        .section-header p { opacity: 0.8; font-size: 1.1rem; }
+
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .service-card { 
+            background: var(--glass); 
+            border: 1px solid var(--border); 
+            border-radius: 15px; 
+            overflow: hidden; 
+            transition: 0.4s ease;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+        }
+        .service-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+        
+        .service-img { width: 100%; height: 200px; overflow: hidden; }
+        .service-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .service-card:hover .service-img img { transform: scale(1.1); }
+
+        .service-info { padding: 25px; flex-grow: 1; }
+        .service-info h3 { font-family: 'Playfair Display', serif; color: var(--gold); margin-bottom: 15px; font-size: 1.4rem; }
+        .service-info p { font-size: 0.95rem; color: #cbd5e1; line-height: 1.6; }
+
+        /* --- FOOTER --- */
+        footer { background: var(--glass); padding: 80px 0 30px; border-top: 1px solid var(--border); text-align: center; margin-top: 50px; }
+        .container { width: 90%; max-width: 1100px; margin: auto; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 50px; text-align: left; }
+        .footer-grid h3 { color: var(--gold); margin-bottom: 20px; }
+        .footer-grid p, .footer-grid a { color: #f1f5f9; text-decoration: none; font-size: 0.95rem; }
+        
+        .float-whatsapp { position: fixed; bottom: 25px; right: 25px; z-index: 1000; }
+        .wa-btn { 
+            width: 60px; height: 60px; background: #25D366; color: #fff; font-size: 26px; 
+            display: flex; align-items: center; justify-content: center; border-radius: 50%; 
+            text-decoration: none; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: 0.3s; 
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media(max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media(max-width: 768px) {
+            .burger { display: block; }
+            .nav-links { 
+                position: fixed; top: 0; right: -100%; height: 100vh; width: 70%; 
+                background: var(--dark); flex-direction: column; justify-content: center; 
+                align-items: center; transition: 0.5s; border-left: 1px solid var(--gold); 
+            }
+            .nav-links.active { right: 0; }
+            .section-header h1 { font-size: 2.2rem; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .service-info h3 { font-size: 1.1rem; }
+            .service-info p { font-size: 0.85rem; }
+        }
+
+        @media(max-width: 480px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-slider">
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+</div>
+
+<nav class="navbar" id="navbar">
+    <div class="nav-content">
+        <a href="index.html" class="logo">SAROJ</a>
+        <div class="burger" id="burger"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html#hero1">Profile</a></li>
+            <li><a href="index.html#academics">Education</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="myservices.html" class="active-link">Services</a></li>
+            <li><a href="index.html#testimonials">Testimonials</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="services-section">
+    <div class="section-header" data-aos="fade-down">
+        <h1>My Legal Services</h1>
+        <p>Comprehensive legal solutions tailored to your specific needs.</p>
+    </div>
+
+    <div class="services-grid">
+        <div class="service-card" data-aos="fade-up">
+            <div class="service-img">
+                <img src="civil law.jpg" alt="Civil Law">
+            </div>
+            <div class="service-info">
+                <h3>Civil Law Consultation</h3>
+                <p>I provide expert advice on non-criminal disputes, including property issues, personal injury claims, and family-related legal matters, ensuring your rights are protected.</p>
+            </div>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-img">
+                <img src="criminal law.jpg" alt="Criminal Law">
+            </div>
+            <div class="service-info">
+                <h3>Criminal Law Representation</h3>
+                <p>Offering robust defense strategies for clients facing criminal charges. I work tirelessly to ensure a fair trial and the best possible outcome in the justice system.</p>
+            </div>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-img">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=60&w=500" alt="Corporate Law">
+            </div>
+            <div class="service-info">
+                <h3>Corporate Law Advisory</h3>
+                <p>Helping businesses navigate complex regulations, from company formation and mergers to internal governance and compliance requirements.</p>
+            </div>
+        </div>
+
+        <div class="service-card" data-aos="fade-up">
+            <div class="service-img">
+                <img src="family law assistant.jpg" alt="Family Law">
+            </div>
+            <div class="service-info">
+                <h3>Family Law Assistance</h3>
+                <p>Compassionate legal guidance for divorce, child custody, alimony, and adoption cases, prioritizing the well-being of your family during difficult transitions.</p>
+            </div>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-img">
+                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=60&w=500" alt="Property Law">
+            </div>
+            <div class="service-info">
+                <h3>Property & Real Estate Law</h3>
+                <p>Handling all aspects of property transactions, including title searches, lease agreements, and resolving disputes related to land ownership or boundaries.</p>
+            </div>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-img">
+                <img src="drafting law.jpg" alt="Contract Drafting">
+            </div>
+            <div class="service-info">
+                <h3>Contract Drafting & Review</h3>
+                <p>Creating legally sound contracts and meticulously reviewing existing ones to minimize your risks and ensure your interests are clearly defined and protected.</p>
+            </div>
+        </div>
+
+        <div class="service-card" data-aos="fade-up">
+            <div class="service-img">
+                <img src="Dispute Resolution.avif" alt="Dispute Resolution">
+            </div>
+            <div class="service-info">
+                <h3>Dispute Resolution & Mediation</h3>
+                <p>Specializing in out-of-court settlements. I help parties reach mutually beneficial agreements through structured mediation and strategic negotiation.</p>
+            </div>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-img">
+                <img src="legal tech.jpg" alt="Legal Tech">
+            </div>
+            <div class="service-info">
+                <h3>Legal Tech & Compliance</h3>
+                <p>Guiding modern enterprises through digital regulations, data privacy laws, and ensuring your technological operations stay compliant with evolving standards.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="contact">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone" style="color: var(--gold);"></i> +977-9855-081755</p>
+                <p><i class="fas fa-envelope" style="color: var(--gold);"></i> advocatekharal@gmail.com</p>
+                <p><i class="fas fa-globe" style="color: var(--gold);"></i> www.sharadkharel.com.np</p>
+            </div>
+            <div>
+                <h3>Location</h3>
+                <p>Kathmandu,<br>Nepal</p>
+            </div>
+            <div class="footer-socials">
+                <h3>Connect</h3>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
+                    <a href="https://facebook.com/Advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #1877F2; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/Advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #E4405F; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/@Advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #CD201F; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-youtube"></i></a>
+                    <a href="https://clubhouse.com/@advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #fff; font-size: 1.5rem; text-decoration: none;"><i class="fas fa-microphone"></i></a>
+                    <a href="https://tiktok.com/@advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #fff; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://twitter.com/Sarojkharal" target="_blank" rel="noopener noreferrer" style="color: #1DA1F2; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com/in/advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #0A66C2; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <a href="Photo Resume (CV) of Sharad Mani Kharal.pdf" download style="display: inline-block; padding: 10px 20px; background: var(--gold); color: #000; text-decoration: none; font-weight: 600; border-radius: 5px;">Download CV</a>
+            </div>
+        </div>
+        <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 20px;">
+        <p style="font-size: 0.8rem; opacity: 0.6;">© 2026 Sharad Mani Kharal. All Rights Reserved. This site is for information purpose only and should not be construed as advertisement or solicitation.</p>
+    </div>
+</footer>
+
+<div class="float-whatsapp">
+    <a href="https://wa.me/9779855081755" class="wa-btn"><i class="fab fa-whatsapp"></i></a>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: true });
+    
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('nav-links');
+    
+    burger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    
+    window.onscroll = function() {
+        const nav = document.getElementById('navbar');
+        if (window.pageYOffset > 100) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    };
+</script>
+
+</body>
+</html>

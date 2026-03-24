@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Services | Sharad Mani Kharal</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #c5a059;
+            --gold-light: #e0c38c;
+            --dark: #0f172a;
+            --glass: rgba(15, 23, 42, 0.85);
+            --border: rgba(197, 160, 89, 0.3);
+        }
+
+        /* --- BASE STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--dark); 
+            color: #f1f5f9; 
+            line-height: 1.7; 
+            overflow-x: hidden; 
+        }
+
+        /* --- BACKGROUND SLIDER --- */
+        .bg-slider { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+        .bg-slider .slide { 
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            background-size: cover; 
+            background-position: center; 
+            opacity: 0; 
+            animation: kenburns 24s infinite; 
+        }
+        
+        .slide:nth-child(1) { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=2000'); animation-delay: 0s; }
+        .slide:nth-child(2) { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=2000'); animation-delay: 8s; }
+        .slide:nth-child(3) { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1453941403708-3c8032cd411f?auto=format&fit=crop&q=80&w=2000'); animation-delay: 16s; }
+
+        @keyframes kenburns { 
+            0% { opacity: 0; transform: scale(1); } 
+            5% { opacity: 1; } 
+            33% { opacity: 1; } 
+            38% { opacity: 0; transform: scale(1.1); } 
+            100% { opacity: 0; } 
+        }
+
+        /* --- NAVIGATION --- */
+        .navbar { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            padding: 20px 0; 
+            z-index: 1000; 
+            transition: 0.4s; 
+            border-bottom: 1px solid var(--border); 
+            backdrop-filter: blur(15px); 
+        }
+        .navbar.scrolled { padding: 10px 0; background: var(--glass); }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; width: 90%; max-width: 1200px; margin: auto; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); text-decoration: none; font-weight: 900; }
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: #fff; 
+            font-size: 0.85rem; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            transition: 0.3s; 
+        }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a.active-link { color: #fff !important; border-bottom: 2px solid var(--gold); padding-bottom: 5px; }
+        
+        .burger { display: none; cursor: pointer; color: white; font-size: 1.5rem; }
+
+        /* --- CONTACT SECTION --- */
+        .contact-section { padding: 160px 0 60px; }
+        .contact-card { 
+            max-width: 700px; 
+            margin: auto; 
+            background: var(--glass); 
+            padding: 40px 30px; 
+            border-radius: 15px; 
+            border: 1px solid var(--border); 
+            backdrop-filter: blur(10px); 
+        }
+        .contact-card h2 { 
+            font-family: 'Playfair Display', serif; 
+            color: var(--gold); 
+            text-align: center; 
+            margin-bottom: 30px; 
+            font-size: 2.5rem; 
+        }
+        .contact-card input, 
+        .contact-card textarea, 
+        .contact-card select { 
+            padding: 15px 20px; 
+            border-radius: 8px; 
+            border: 1px solid var(--border); 
+            background: rgba(255,255,255,0.05); 
+            color: #fff; 
+            font-size: 1rem; 
+            width: 100%; 
+            margin-bottom: 20px; 
+            outline: none; 
+        }
+
+        .contact-card select option { background-color: var(--dark); color: #fff; }
+
+        .contact-card button { 
+            background: var(--gold); 
+            color: var(--dark); 
+            padding: 15px; 
+            font-weight: 700; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            text-transform: uppercase; 
+            width: 100%; 
+        }
+        .contact-card button:hover { 
+            background: #fff; 
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4); 
+        }
+
+        /* --- COMPONENTS --- */
+        .map-container { margin: 60px auto; width: 90%; max-width: 1000px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .map-container iframe { width: 100%; height: 450px; border: 0; }
+
+        footer { background: var(--glass); padding: 80px 0 30px; border-top: 1px solid var(--border); text-align: center; }
+        .container { width: 90%; max-width: 1100px; margin: auto; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 50px; text-align: left; }
+        .footer-grid h3 { color: var(--gold); margin-bottom: 20px; }
+        .footer-grid p, .footer-grid a { color: #f1f5f9; text-decoration: none; font-size: 0.95rem; }
+        
+        .float-whatsapp { position: fixed; bottom: 25px; right: 25px; z-index: 1000; }
+        .wa-btn { 
+            width: 60px; 
+            height: 60px; 
+            background: #25D366; 
+            color: #fff; 
+            font-size: 26px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border-radius: 50%; 
+            text-decoration: none; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
+            transition: 0.3s; 
+        }
+
+        @media(max-width: 768px) {
+            .burger { display: block; }
+            .nav-links { 
+                position: fixed; 
+                top: 0; 
+                right: -100%; 
+                height: 100vh; 
+                width: 70%; 
+                background: var(--dark); 
+                flex-direction: column; 
+                justify-content: center; 
+                align-items: center; 
+                transition: 0.5s; 
+                border-left: 1px solid var(--gold); 
+            }
+            .nav-links.active { right: 0; }
+            .contact-section { padding: 140px 0 60px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-slider">
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+</div>
+
+<nav class="navbar" id="navbar">
+    <div class="nav-content">
+        <a href="index.html" class="logo">SAROJ</a>
+        <div class="burger" id="burger"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html#hero1">Profile</a></li>
+            <li><a href="index.html#academics">Education</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="myservices.html" class="active-link">Services</a></li>
+            <li><a href="index.html#testimonials">Testimonials</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="contact-section">
+    <div class="contact-card" data-aos="fade-up">
+        <h2>Contact Me</h2>
+        <form action="mailto:advocatekharal@gmail.com" method="POST" enctype="text/plain">
+            <input type="text" name="fullname" placeholder="Full Legal Name" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <select name="service" required>
+                <option value="" disabled selected>Choose Service</option>
+                <option>Civil Law Consultation</option>
+                <option>Criminal Law Representation</option>
+                <option>Corporate Law Advisory</option>
+                <option>Family Law Assistance</option>
+                <option>Property & Real Estate Law</option>
+                <option>Contract Drafting & Review</option>
+                <option>Dispute Resolution & Mediation</option>
+                <option>Legal Tech & Compliance Solutions</option>
+            </select>
+            <textarea name="message" rows="6" placeholder="Write your message" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        <p style="margin-top:20px; font-size: 1rem; color:#cbd5e1; text-align:center; font-style:italic;">
+            Focused on delivering clear legal communication and personalized support for every instruction received.
+        </p>
+    </div>
+</section>
+
+<div class="map-container" data-aos="fade-up">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.81414436814!2d84.41738231506161!3d27.707577982791845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDQyJzI3LjMiTiA4NMKwMjUnMTAuNSJF!5e0!3m2!1sen!2snp!4v1650000000000!5m2!1sen!2snp" allowfullscreen="" loading="lazy"></iframe>
+</div>
+
+<footer id="contact">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone" style="color: var(--gold);"></i> +977-9855-081755</p>
+                <p><i class="fas fa-envelope" style="color: var(--gold);"></i> advocatekharal@gmail.com</p>
+                <p><i class="fas fa-globe" style="color: var(--gold);"></i> www.sharadkharel.com.np</p>
+            </div>
+            <div>
+                <h3>Location</h3>
+                <p>Kathmandu,<br>Nepal</p>
+            </div>
+            <div class="footer-socials">
+                <h3>Connect</h3>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
+                    <a href="https://facebook.com/Advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #1877F2; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/Advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #E4405F; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/@Advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #CD201F; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-youtube"></i></a>
+                    <a href="https://clubhouse.com/@advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #fff; font-size: 1.5rem; text-decoration: none;"><i class="fas fa-microphone"></i></a>
+                    <a href="https://tiktok.com/@advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #fff; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://twitter.com/Sarojkharal" target="_blank" rel="noopener noreferrer" style="color: #1DA1F2; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com/in/advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #0A66C2; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <a href="Photo Resume (CV) of Sharad Mani Kharal.pdf" download style="display: inline-block; padding: 10px 20px; background: var(--gold); color: #000; text-decoration: none; font-weight: 600; border-radius: 5px;">Download CV</a>
+            </div>
+        </div>
+        <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 20px;">
+        <p style="font-size: 0.8rem; opacity: 0.6;">© 2026 Sharad Mani Kharal. All Rights Reserved. This site is for information purpose only and should not be construed as advertisement or solicitation.</p>
+    </div>
+</footer>
+
+<div class="float-whatsapp">
+    <a href="https://wa.me/9779855081755" class="wa-btn"><i class="fab fa-whatsapp"></i></a>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: true });
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('nav-links');
+    
+    burger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    
+    window.onscroll = function() {
+        const nav = document.getElementById('navbar');
+        if (window.pageYOffset > 100) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    };
+</script>
+</body>
+</html>
