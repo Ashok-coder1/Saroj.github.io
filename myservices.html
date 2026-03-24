@@ -113,12 +113,16 @@
         .service-info p { font-size: 0.95rem; color: #cbd5e1; line-height: 1.6; }
 
         /* --- FOOTER --- */
-        footer { background: var(--glass); padding: 80px 0 30px; border-top: 1px solid var(--border); text-align: center; margin-top: 50px; }
+        footer { background: var(--glass); padding: 80px 0 30px; border-top: 1px solid var(--border); margin-top: 50px; }
         .container { width: 90%; max-width: 1100px; margin: auto; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 50px; text-align: left; }
-        .footer-grid h3 { color: var(--gold); margin-bottom: 20px; }
-        .footer-grid p, .footer-grid a { color: #f1f5f9; text-decoration: none; font-size: 0.95rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-bottom: 50px; text-align: left; }
+        .footer-grid h3 { color: var(--gold); margin-bottom: 20px; font-family: 'Playfair Display', serif; font-size: 1.5rem; }
+        .footer-grid p, .footer-grid a { color: #f1f5f9; text-decoration: none; font-size: 0.95rem; display: block; margin-bottom: 10px; }
         
+        /* FOOTER BOTTOM ALIGNMENT (MATCHING SCREENSHOT) */
+        .footer-bottom { text-align: center; margin-top: 20px; }
+        .footer-bottom p { font-size: 0.8rem; opacity: 0.8; margin-bottom: 5px; color: #f1f5f9; }
+
         .float-whatsapp { position: fixed; bottom: 25px; right: 25px; z-index: 1000; }
         .wa-btn { 
             width: 60px; height: 60px; background: #25D366; color: #fff; font-size: 26px; 
@@ -134,19 +138,15 @@
         @media(max-width: 768px) {
             .burger { display: block; }
             .nav-links { 
-                position: fixed; top: 0; right: -100%; height: 100vh; width: 70%; 
+                position: fixed; top: 0; right: -100%; height: 100vh; width: 75%; 
                 background: var(--dark); flex-direction: column; justify-content: center; 
                 align-items: center; transition: 0.5s; border-left: 1px solid var(--gold); 
             }
             .nav-links.active { right: 0; }
             .section-header h1 { font-size: 2.2rem; }
-            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .service-info h3 { font-size: 1.1rem; }
-            .service-info p { font-size: 0.85rem; }
-        }
-
-        @media(max-width: 480px) {
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .services-grid { grid-template-columns: 1fr; gap: 20px; }
+            .service-info h3 { font-size: 1.2rem; }
+            .footer-grid { text-align: left; grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -267,9 +267,9 @@
         <div class="footer-grid">
             <div>
                 <h3>Contact Info</h3>
-                <p><i class="fas fa-phone" style="color: var(--gold);"></i> +977-9855-081755</p>
-                <p><i class="fas fa-envelope" style="color: var(--gold);"></i> advocatekharal@gmail.com</p>
-                <p><i class="fas fa-globe" style="color: var(--gold);"></i> www.sharadkharel.com.np</p>
+                <p><i class="fas fa-phone" style="color: var(--gold); width: 25px;"></i> +977-9855-081755</p>
+                <p><i class="fas fa-envelope" style="color: var(--gold); width: 25px;"></i> advocatekharal@gmail.com</p>
+                <p><i class="fas fa-globe" style="color: var(--gold); width: 25px;"></i> www.sharadkharel.com.np</p>
             </div>
             <div>
                 <h3>Location</h3>
@@ -277,21 +277,28 @@
             </div>
             <div class="footer-socials">
                 <h3>Connect</h3>
-                <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
-                    <a href="https://facebook.com/Advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #1877F2; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://instagram.com/Advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #E4405F; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-instagram"></i></a>
-                    <a href="https://youtube.com/@Advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #CD201F; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-youtube"></i></a>
-                    <a href="https://clubhouse.com/@advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #fff; font-size: 1.5rem; text-decoration: none;"><i class="fas fa-microphone"></i></a>
-                    <a href="https://tiktok.com/@advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #fff; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://twitter.com/Sarojkharal" target="_blank" rel="noopener noreferrer" style="color: #1DA1F2; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-twitter"></i></a>
-                    <a href="https://linkedin.com/in/advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #0A66C2; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-linkedin-in"></i></a>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 25px;">
+                    <a href="https://facebook.com/Advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #1877F2; font-size: 1.5rem;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/Advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #E4405F; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/@Advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #CD201F; font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
+                    <a href="https://clubhouse.com/@advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #fff; font-size: 1.5rem;"><i class="fas fa-microphone"></i></a>
+                    <a href="https://tiktok.com/@advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #fff; font-size: 1.5rem;"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://twitter.com/Sarojkharal" target="_blank" rel="noopener noreferrer" style="color: #1DA1F2; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com/in/advocatekharal" target="_blank" rel="noopener noreferrer" style="color: #0A66C2; font-size: 1.5rem;"><i class="fab fa-linkedin-in"></i></a>
                 </div>
-                <a href="Photo Resume (CV) of Sharad Mani Kharal.pdf" download style="display: inline-block; padding: 10px 20px; background: var(--gold); color: #000; text-decoration: none; font-weight: 600; border-radius: 5px;">Download CV</a>
+                <a href="Photo Resume (CV) of Sharad Mani Kharal.pdf" download style="display: inline-block; padding: 12px 25px; background: var(--gold); color: #000; text-decoration: none; font-weight: 600; border-radius: 5px;">Download CV</a>
             </div>
         </div>
+        
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 20px;">
-        <p style="font-size: 0.8rem; opacity: 0.6;">© 2026 Sharad Mani Kharal. All Rights Reserved. This site is for information purpose only and should not be construed as advertisement or solicitation.</p>
+        
+        <div class="footer-bottom">
+            <p>© 2026 Sharad Mani Kharal. All Rights Reserved.</p>
+            <p>This site is for information purpose only and should not be construed as advertisement or solicitation.</p>
+            <p>Developed by: <a href="https://webashok.com" target="_blank" rel="noopener noreferrer" style="color: var(--gold); text-decoration: none;">Web Ashok</a></p>
+        </div>
     </div>
+    
 </footer>
 
 <div class="float-whatsapp">
