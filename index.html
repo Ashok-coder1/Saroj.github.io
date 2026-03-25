@@ -258,6 +258,13 @@
             .hero-card { padding: 30px 15px; }
             .grid-3, .leadership-grid, .testimonial-grid { grid-template-columns: 1fr !important; }
         }
+
+       @media (max-width: 768px) {
+  .hero-card h1 {
+    font-size: 1.6rem !important;
+  }
+}
+
     </style>
 </head>
 <body>
@@ -289,13 +296,29 @@
     <header class="hero" id="hero1">
         <div class="hero-card" data-aos="zoom-in">
             <img src="lawer.enc" alt="Sharad Mani Kharal">
-            <h1>Adv. Sharad Mani Kharal</h1>
+            <h1 style="text-align:center; margin:10px 0; font-size:clamp(1.5rem, 4vw, 2.2rem);">
+  Adv. Sharad Mani Kharal
+</h1>
         
-            <p style="display:flex; justify-content:center; align-items:center; height:60px; margin:0; font-size:1.8rem; font-weight:700; letter-spacing:2px; color:#c5a059; font-family:'Times New Roman', serif;">
+            <p style="display:flex; justify-content:center; align-items:center; height:60px; margin:0; font-size:1.9rem; font-weight:800; letter-spacing:2px; color:#c5a059; font-family:'Times New Roman', serif;">
   LAWYER
 </p>
 
-           <br> <p style="font-size:1.6rem;"> Chairman of <a href="https://ojaslaw.com.np" target="_blank" style="color:#d4af37;">Ojas Law & Associates</a></p>
+<div style="display:flex; justify-content:center; margin-top:6px;">
+  <span style="
+    background:#ffffff;
+    color:#000;
+    padding:5px 12px;
+    border-radius:20px;
+    font-size:0.95rem;
+    font-weight:600;
+    font-family:'Noto Sans Devanagari', serif;
+  ">
+    अधिवक्ता शरद मणि खराल
+  </span>
+</div>
+
+           <br> <p style="font-size:1.3rem;"> Chairman of <a href="https://ojaslaw.com.np" target="_blank" style="color:#d4af37;">Ojas Law & Associates</a></p>
             <br>
             <h3>Consultation Call</h3>
             <div class="call-btn-wrapper">
