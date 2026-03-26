@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    <div id="google_translate_element"></div>
+
     <style>
         :root {
             --gold: #c5a059;
@@ -179,9 +181,54 @@
             .nav-links.active { right: 0; }
             .contact-section { padding: 140px 0 60px; }
         }
+
+                    /* --- TRANSLATE STYLES --- */
+        .translate-wrapper {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 9999;
+    background: #1e293b; 
+    border-radius: 8px;
+    border: 1px solid var(--gold);
+    min-width: 140px; 
+    height: auto;
+    
+    
+    padding: 8px 10px 8px 10px; 
+    display: flex;
+    align-items: center; 
+}
+
+       .close-translate {
+    background: none;
+    border: none;
+    color: var(--gold);
+    font-size: 20px;
+    cursor: pointer;
+    
+    /* ADD/UPDATE THESE LINES: */
+    position: static;   
+    margin-left: 10px;  
+    order: 2;           
+}
+
+/* Forces the dropdown to be first */
+.gtranslate_wrapper {
+    order: 1; 
+}
+
     </style>
+
+    
+
 </head>
 <body>
+
+    <div class="translate-wrapper" id="translateWrapper">
+    <button class="close-translate" onclick="closeTranslate()">×</button>
+    <div class="gtranslate_wrapper"></div>
+</div>
 
 <div class="bg-slider">
     <div class="slide"></div>
@@ -308,6 +355,25 @@
             nav.classList.remove('scrolled');
         }
     };
-</script>
+    </script>
+
+<script>
+    window.gtranslateSettings = {
+        "default_language": "en",
+        "languages": ["en", "ne", "hi", "zh-CN", "ko", "fr", "es", "ar", "pt", "de", "ja", "ru"],
+        "wrapper_selector": ".gtranslate_wrapper",
+        "flag_size": 24,
+        "alt_flags": {"en": "usa"}
+    };
+
+    function closeTranslate() {
+        var wrapper = document.getElementById('translateWrapper');
+        if (wrapper) {
+            wrapper.style.display = 'none';
+        }
+    }
+    </script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
+
 </body>
 </html>
