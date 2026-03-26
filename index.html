@@ -266,36 +266,39 @@
 
         /* --- TRANSLATE STYLES --- */
         .translate-wrapper {
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            z-index: 9999;
-            background: #1e293b; 
-            padding: 30px 15px 15px 15px; 
-            border-radius: 8px;
-            border: 1px solid var(--gold);
-            min-width: 140px; 
-            height: auto;
-        }
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 9999;
+    background: #1e293b; 
+    border-radius: 8px;
+    border: 1px solid var(--gold);
+    min-width: 140px; 
+    height: auto;
+    
+    
+    padding: 8px 10px 8px 10px; 
+    display: flex;
+    align-items: center; 
+}
 
-        .close-translate {
-            position: absolute;
-            top: 2px;
-            right: 5px;
-            background: none;
-            border: none;
-            color: var(--gold);
-            font-size: 20px;
-            cursor: pointer;
-        }
+       .close-translate {
+    background: none;
+    border: none;
+    color: var(--gold);
+    font-size: 20px;
+    cursor: pointer;
+    
+    /* ADD/UPDATE THESE LINES: */
+    position: static;   
+    margin-left: 10px;  
+    order: 2;           
+}
 
-        /* Specifically ensures the dropdown text is visible on dark theme */
-        .gtranslate_wrapper select {
-            color: #000 !important;
-            background: #fff !important;
-            padding: 2px;
-            border-radius: 4px;
-        }
+/* Forces the dropdown to be first */
+.gtranslate_wrapper {
+    order: 1; 
+}
     </style>
 </head>
 <body>
@@ -593,7 +596,7 @@
     <script>
     window.gtranslateSettings = {
         "default_language": "en",
-        "languages": ["en", "ne", "hi"], // Added languages to enable the selection menu
+        "languages": ["en", "ne", "hi", "zh-CN", "ko", "fr", "es", "ar", "pt", "de", "ja", "ru"],
         "wrapper_selector": ".gtranslate_wrapper",
         "flag_size": 24,
         "alt_flags": {"en": "usa"}
@@ -606,6 +609,6 @@
         }
     }
     </script>
-    <script src="https://scripts.gtranslate.io/widgets/latest/dropdown.js" defer></script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
 </body>
 </html>
