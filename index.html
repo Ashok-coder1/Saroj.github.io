@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -263,16 +264,18 @@
           }
         }
 
+        /* --- TRANSLATE STYLES --- */
         .translate-wrapper {
             position: fixed;
             top: 100px;
             right: 20px;
             z-index: 9999;
-            background: #000; 
+            background: #1e293b; 
             padding: 30px 15px 15px 15px; 
             border-radius: 8px;
             border: 1px solid var(--gold);
             min-width: 140px; 
+            height: auto;
         }
 
         .close-translate {
@@ -284,6 +287,14 @@
             color: var(--gold);
             font-size: 20px;
             cursor: pointer;
+        }
+
+        /* Specifically ensures the dropdown text is visible on dark theme */
+        .gtranslate_wrapper select {
+            color: #000 !important;
+            background: #fff !important;
+            padding: 2px;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -582,7 +593,7 @@
     <script>
     window.gtranslateSettings = {
         "default_language": "en",
-        "detect_browser_language": true,
+        "languages": ["en", "ne", "hi"], // Added languages to enable the selection menu
         "wrapper_selector": ".gtranslate_wrapper",
         "flag_size": 24,
         "alt_flags": {"en": "usa"}
