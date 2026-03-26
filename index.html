@@ -11,7 +11,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="Sarad Mani Kharal.jpg" rel="stylesheet">
 
-   
+    
 
     <style>
         :root {
@@ -267,11 +267,33 @@
   }
 }
 
+/* This makes the translator float on top of everything */
+.translate-wrapper {
+    position: fixed;
+    top: 100px; /* Adjust this so it doesn't overlap your logo */
+    right: 20px;
+    z-index: 9999; /* This ensures it stays on top of the navbar */
+    background: var(--glass);
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--gold);
+}
+
+/* Optional: This hides the "Powered by Google" text for a cleaner look */
+.goog-logo-link {
+    display: none !important;
+}
+.goog-te-gadget {
+    color: transparent !important;
+}
+
     </style>
 </head>
 <body>
 
-     <div id="google_translate_element"></div>
+<div class="translate-wrapper">
+    <div id="google_translate_element"></div>
+</div>
 
     <div class="bg-slider">
         <div class="slide"></div>
@@ -568,6 +590,7 @@ function googleTranslateElementInit() {
 </script>
 
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     
 </body>
 </html>
