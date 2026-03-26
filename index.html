@@ -272,11 +272,10 @@
     top: 100px;
     right: 20px;
     z-index: 9999;
-    background: var(--glass);
-    padding: 15px 10px 10px 10px; /* Extra padding at top for the X button */
+    background: #000; /* Matches your dark theme */
+    padding: 20px 10px 10px 10px;
     border-radius: 8px;
     border: 1px solid var(--gold);
-    display: block; /* Ensures it shows on refresh */
 }
 
 .close-translate {
@@ -288,36 +287,6 @@
     color: var(--gold);
     font-size: 20px;
     cursor: pointer;
-    font-weight: bold;
-}
-
-.close-translate:hover {
-    color: #fff;
-}
-
-        /* Hides the top white bar from Google Translate */
-.goog-te-banner-frame.skiptranslate {
-    display: none !important;
-}
-body {
-    top: 0px !important;
-}
-
-/* Also hides the "Suggested Translation" popups on hover */
-#goog-gt-tt {
-    display: none !important;
-    visibility: hidden !important;
-}
-.goog-tooltip {
-    display: none !important;
-}
-.goog-tooltip:hover {
-    display: none !important;
-}
-.goog-text-highlight {
-    background-color: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
 }
 
     </style>
@@ -326,7 +295,7 @@ body {
 
 <div class="translate-wrapper" id="translateWrapper">
     <button class="close-translate" onclick="closeTranslate()">×</button>
-    <div id="google_translate_element"></div>
+    <div class="gtranslate_wrapper"></div>
 </div>
 
     <div class="bg-slider">
@@ -617,21 +586,23 @@ body {
         };
     </script>
 
-    <script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'en', // Set original language to English
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-    autoDisplay: false
-  }, 'google_translate_element');
-}
+<script>
+// 1. Settings for GTranslate
+window.gtranslateSettings = {
+    "default_language": "en",
+    "detect_browser_language": true,
+    "wrapper_selector": ".gtranslate_wrapper",
+    "flag_size": 24,
+    "alt_flags": {"en": "usa"}
+};
 
-// Function to hide the box
+// 2. The Close Function
 function closeTranslate() {
     document.getElementById('translateWrapper').style.display = 'none';
 }
 </script>
-<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script src="https://scripts.gtranslate.io/widgets/latest/float.js" defer></script>
 
     
 </body>
