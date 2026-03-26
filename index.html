@@ -272,10 +272,11 @@
     top: 100px;
     right: 20px;
     z-index: 9999;
-    background: #000; /* Matches your dark theme */
-    padding: 20px 10px 10px 10px;
+    background: #000; 
+    padding: 30px 15px 15px 15px; /* Added more top padding for the X */
     border-radius: 8px;
     border: 1px solid var(--gold);
+    min-width: 100px; /* Gives the flags room to breathe */
 }
 
 .close-translate {
@@ -587,7 +588,7 @@
     </script>
 
 <script>
-// 1. Settings for GTranslate
+// 1. GTranslate Settings
 window.gtranslateSettings = {
     "default_language": "en",
     "detect_browser_language": true,
